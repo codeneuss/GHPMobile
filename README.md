@@ -25,15 +25,14 @@ Eine mobile-optimierte Web-App zur Verwaltung von GitHub Projects, speziell entw
 
 ## Installation & Setup
 
-### 1. GitHub Personal Access Token erstellen
+### 1. GitHub OAuth App (Optional für Entwickler)
 
-1. Gehe zu [GitHub Settings → Developer Settings → Personal Access Tokens](https://github.com/settings/tokens/new)
-2. Erstelle einen neuen Token mit folgenden Scopes:
-   - `repo`
-   - `project`
-   - `read:org`
-   - `read:user`
-3. Kopiere den Token (wird nur einmal angezeigt!)
+Die App nutzt GitHub's Device Flow OAuth. Der öffentliche Client ID ist bereits in der App konfiguriert. Für eine eigene Deployment kannst du eine eigene OAuth App erstellen:
+
+1. Gehe zu [GitHub Settings → Developer Settings → OAuth Apps](https://github.com/settings/developers)
+2. Erstelle eine neue OAuth App
+3. Aktiviere "Device Flow"
+4. Kopiere die Client ID und ersetze sie in `src/lib/oauth.ts`
 
 ### 2. Lokale Entwicklung
 
@@ -70,11 +69,12 @@ Die App wird automatisch über GitHub Actions auf GitHub Pages deployed:
 ## Nutzung
 
 1. Öffne die App im Browser
-2. Gib deinen GitHub Personal Access Token ein
-3. Wähle ein Projekt aus deinen GitHub Projects
-4. Navigiere durch Spalten per Swipe
-5. Tippe auf Items um den Status zu ändern
-6. Nutze den ➕ Button um neue Items zu erstellen
+2. Klicke auf "Mit GitHub anmelden"
+3. Autorisiere die App mit dem angezeigten Code auf GitHub
+4. Wähle ein Projekt aus deinen GitHub Projects
+5. Navigiere durch Spalten per Swipe
+6. Tippe auf Items um den Status zu ändern
+7. Nutze den ➕ Button um neue Items zu erstellen
 
 ## iPhone 11 Optimierungen
 
