@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useStore } from './store/useStore';
 import { Login } from './components/Login';
-import { Header } from './components/Header';
 import { ProjectSelector } from './components/ProjectSelector';
 import { ColumnView } from './components/ColumnView';
 import { GitHubClient } from './lib/github';
@@ -30,8 +29,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
+    <div className="min-h-screen">
       {selectedProject ? <ColumnView /> : <ProjectSelector />}
     </div>
   );

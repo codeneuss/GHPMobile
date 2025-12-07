@@ -4,7 +4,7 @@ import { useStore } from '../store/useStore';
 import { GitHubClient } from '../lib/github';
 
 export function ProjectSelector() {
-  const { user, token, projects, setProjects, setSelectedProject } = useStore();
+  const { user, token, projects, setProjects, setSelectedProject, logout } = useStore();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -51,20 +51,32 @@ export function ProjectSelector() {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8 relative z-10"
       >
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center shadow-lg">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center shadow-lg">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+              </svg>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
+                Deine Projekte
+              </h2>
+              <p className="text-secondary text-sm mt-0.5">
+                {projects.length} {projects.length === 1 ? 'Projekt' : 'Projekte'} verfügbar
+              </p>
+            </div>
+          </div>
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={logout}
+            className="p-3 rounded-xl glass hover:bg-white/10 transition-colors"
+            title="Abmelden"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg>
-          </div>
-          <div>
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
-              Deine Projekte
-            </h2>
-            <p className="text-secondary text-sm mt-0.5">
-              {projects.length} {projects.length === 1 ? 'Projekt' : 'Projekte'} verfügbar
-            </p>
-          </div>
+          </motion.button>
         </div>
       </motion.div>
 
