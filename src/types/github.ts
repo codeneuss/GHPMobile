@@ -55,14 +55,14 @@ export interface ProjectField {
 export interface ProjectV2Item {
   id: string;
   content?: {
-    title: string;
+    title?: string;
     body?: string;
     createdAt: string;
     updatedAt: string;
   };
   fieldValues: {
     nodes: {
-      field: {
+      field?: {
         id: string;
         name: string;
       };

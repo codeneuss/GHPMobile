@@ -6,7 +6,7 @@ import { ItemCard } from './ItemCard';
 import { CreateItemButton } from './CreateItemButton';
 
 export function ColumnView() {
-  const { selectedProject, currentColumnIndex, setCurrentColumnIndex, statusField, setStatusField } = useStore();
+  const { selectedProject, currentColumnIndex, setCurrentColumnIndex, setStatusField } = useStore();
   const [columns, setColumns] = useState<{ id: string; name: string; items: ProjectV2Item[] }[]>([]);
   const x = useMotionValue(0);
   const background = useTransform(
