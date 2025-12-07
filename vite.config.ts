@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', '.nojekyll'],
       manifest: {
         name: 'GitHub Projects Mobile',
         short_name: 'GH Projects',
@@ -38,6 +38,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false
-  }
+    sourcemap: false,
+    assetsInlineLimit: 0,
+  },
+  publicDir: 'public'
 })
